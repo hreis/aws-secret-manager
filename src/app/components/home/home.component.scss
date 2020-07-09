@@ -1,0 +1,158 @@
+$primary-color: #7159C1;
+
+#page-create-point {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+#page-create-point header {
+  margin-top: 48px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#page-create-point header a {
+  color: var(--title-color);
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#page-create-point header a svg {
+  margin-right: 16px;
+  color: var(--primary-color);
+}
+
+#page-create-point mat-card {
+  margin: 80px auto;
+  padding: 64px;
+  max-width: 730px;
+  background: rgb(32, 32, 36);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-create-point mat-card h1 {
+  font-size: 36px;
+  margin-bottom: 45px;
+}
+
+// #page-create-point form fieldset {
+//   margin-top: 64px;
+//   min-inline-size: auto;
+//   border: 0;
+// }
+
+
+#page-create-point mat-card h2 {
+  font-size: 24px;
+}
+
+#page-create-point mat-card span {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+#page-create-point mat-card .field-group {
+  flex: 1;
+  display: flex;
+}
+
+#page-create-point mat-card .field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+
+#page-create-point mat-card .field label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+#page-create-point mat-card .field :disabled {
+  cursor: not-allowed;
+}
+
+#page-create-point mat-card .field-group .field + .field {
+  margin-left: 24px;
+}
+
+
+#page-create-point mat-card .field-check {
+  flex-direction: row;
+  align-items: center;
+}
+
+#page-create-point mat-card .field-check label {
+  margin: 0 0 0 8px;
+}
+
+#page-create-point mat-card .leaflet-container {
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.include-button {
+  color: $primary-color;
+}
+
+.update-button {
+  color: #ffd740;
+}
+
+.slider {
+  float: right;
+
+}
+
+.tooltip-primary-color {
+  background-color: $primary-color;
+}
+
+.mat-fab.mat-accent {
+  background-color: $primary-color !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: $primary-color !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: $primary-color !important;
+}
+
+.success-msg {
+  background-color: green;
+  //
+  color: #fff;
+  font-weight: 500;
+}
+
+.error-msg {
+  background-color: #f44336;
+  color: #fff;
+  font-weight: 500;
+}
+
+.alert-msg {
+  background-color:#ffd740;
+  color: rgb(24, 24, 24);
+  font-weight: 500;
+}
+

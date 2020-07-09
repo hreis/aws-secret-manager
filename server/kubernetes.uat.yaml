@@ -1,0 +1,93 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    field.cattle.io/creatorId: u-oveuyas4tv
+    field.cattle.io/publicEndpoints: '[{"addresses":["10.194.49.109"],"port":3333,"protocol":"HTTP","serviceName":"rpa:rpa-manager-back","ingressName":"rpa:rpa-manager-back-ingress","hostname":"manager-back.uat.rpa.container.btgpactual.net","allNodes":true}]'
+  creationTimestamp: "2020-06-09T19:53:17Z"
+  generation: 2
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-rpa-rpa-manager-back
+  name: rpa-manager-back
+  namespace: rpa
+  selfLink: /apis/apps/v1beta2/namespaces/rpa/deployments/rpa-manager-back
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-rpa-rpa-manager-back
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2020-06-09T19:53:16Z"
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-rpa-rpa-manager-back
+    spec:
+      containers:
+      - image: ImageName
+        ports:
+        - containerPort: 3333
+          name: api-port
+          protocol: TCP
+        imagePullPolicy: Always
+        name: rpa-manager-back
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          procMount: Default
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  creationTimestamp: "2020-06-09T19:58:54Z"
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+  name: rpa-manager-back-ingress
+  namespace: rpa
+  selfLink: /apis/extensions/v1beta1/namespaces/rpa/ingresses/rpa-manager-back-ingress
+spec:
+  rules:
+  - host: manager-back.uat.rpa.container.btgpactual.net
+    http:
+      paths:
+      - backend:
+          serviceName: rpa-manager-back
+          servicePort: 3333
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rpa-manager-back
+  namespace: rpa
+spec:
+  ports:
+  - name: backend-port
+    port: 3333
+    protocol: TCP
+    targetPort: 3333
+  selector:
+    workload.user.cattle.io/workloadselector: deployment-rpa-manager-back

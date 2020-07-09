@@ -1,0 +1,113 @@
+<div class="loading" *ngIf="showSpinner">
+  <div class="loader"></div>
+</div>
+<div id="page-create-point" *ngIf="showSpinner == false">
+  <header>
+    <img class="logo" src='../../../assets/images/logo.png' alt='Btg Pactual'>
+
+    <a (click)="signOut()">
+      <i class="fas fa-times"></i>
+    </a>
+  </header>
+
+  <mat-card style="box-shadow: 5px 5px 10px 0 rgba(0,0,0,.1)!important">
+    <form class="example-form" [formGroup]="formGroup" >
+      <!-- (ngSubmit)="onFormSubmit()" -->
+
+      <mat-card-content>
+
+        <h1>Cadastro de processo</h1>
+
+        <mat-form-field class="field">
+          <mat-label>Nome no Orchestrator</mat-label>
+          <mat-select (selectionChange)="selectProcess($event.value)" formControlName="processFormControl">
+            <mat-option *ngFor="let process of processes" [value]="process.process">
+              {{process.process}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="field">
+          <mat-label>Nome do processo</mat-label>
+          <input matInput formControlName="jobFromControl" autocomplete="off">
+        </mat-form-field>
+
+        <div class="field-group">
+
+          <mat-form-field class="field">
+            <mat-label>Nome do desenvolvedor</mat-label>
+            <mat-select name="dev" formControlName="devFormControl">
+              <mat-option *ngFor="let dev of devs" [value]="dev.NM_DESENV">
+                {{dev.NM_DESENV}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="field">
+            <mat-label>Nome do usuário</mat-label>
+            <mat-select name="dev" formControlName="userFormControl">
+              <mat-option *ngFor="let user of users" [value]="user.NM_USUARIO">
+                {{user.NM_USUARIO}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+<!--
+          <mat-form-field class="field">
+            <mat-label>Nome do usuário</mat-label>
+            <input type="text" aria-label="text" matInput formControlName="userFormControl" [matAutocomplete]="auto"
+              autocomplete="off">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let user of filteredOptions | async" [value]="user.NM_USUARIO">
+                {{user.NM_USUARIO}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> -->
+
+        </div>
+
+
+        <div class="field-group">
+
+          <mat-form-field class="field">
+            <mat-label>Minutos gastos pelo usuário</mat-label>
+            <input matInput formControlName="spendMinutesFormControl" autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field class="field">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="stateFormControl">
+              <mat-option [value]="0">
+                Ativo
+              </mat-option>
+              <mat-option [value]="1">
+                Desativado
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <mat-form-field class="field">
+
+          <mat-label>Pesquisar</mat-label>
+          <input matInput formControlName="searchFormControl" autocomplete="off" (keydown.enter)="search()">
+          <i class="fas fa-search" style="float: right;
+          margin-top: -14px; margin-right: 10px;"></i>
+        </mat-form-field>
+
+        <!-- <button (click)="search()" mat-fab class="include-button">
+
+        </button> -->
+
+
+        <!-- [disabled]="!formGroup.valid" -->
+      </mat-card-content>
+    </form>
+      <mat-card-actions>
+        <button mat-button color="warn" (click)="delete(idJob)">Excluir</button>
+        <button mat-button class="update-button" (click)="update()">Alterar</button>
+        <button mat-button class="include-button" (click)="onFormSubmit()">Incluir</button>
+      </mat-card-actions>
+
+  </mat-card>
+</div>
