@@ -2,7 +2,7 @@ module.exports = {
     async mySecrets(secretName) {
         // Load the AWS SDK
         var AWS = require('aws-sdk'),
-            region = "sa-east-1",
+            region = "",
             secretName = secretName,
             secret,
             decodedBinarySecret;

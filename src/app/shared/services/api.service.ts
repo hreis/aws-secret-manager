@@ -11,10 +11,8 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ApiService {
 
-  AUTH_SERVER = "http://manager-back.dev.rpa.container.btgpactual.net";
-  // AUTH_SERVER = "http://manager-back.uat.rpa.container.btgpactual.net";
-  // AUTH_SERVER = "http://manager-back.prod.rpa.container.btgpactual.net";
-  // AUTH_SERVER = "http://localhost:3333";
+  AUTH_SERVER = "";
+  // AUTH_SERVER = "";
   authSubject  =  new  BehaviorSubject(false); //This variable tracks the user's authentication state. false means the user is not authenticated yet.
 
   constructor(private http: HttpClient) { }

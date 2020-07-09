@@ -3,20 +3,14 @@ const knex = require('../database/mySqlConnection');
 module.exports = {
     async getJobs(req, res) {
 
-        // const results = await knex({ pro: 'TB_JOB_INFO2', de: 'TB_DESENV', pd: 'TB_JOB_INFO2_DESENV', pu: 'TB_JOB_USUARIO', us: 'TB_USUARIO' })
+        
 
-        const results = await knex('TB_JOB_INFO2')
-            .select('TB_JOB_INFO2.ID_FLUXO as id',
-                'TB_JOB_INFO2.nm_fluxo_ui as ui',
-                'TB_JOB_INFO2.nm_fluxo as name',
-                'TB_JOB_INFO2.es_ativo as ativo',
-                'TB_DESENV.NM_DESENV as devName',
-                'TB_USUARIO.NM_USUARIO as usrName',
-                'TB_JOB_INFO2.TM_EXEC_MANUAL as manual')
-            .leftJoin('TB_JOB_INFO_DESENV', 'TB_JOB_INFO2.ID_FLUXO', 'TB_JOB_INFO_DESENV.ID_FLUXO')
-            .leftJoin('TB_DESENV', 'TB_JOB_INFO_DESENV.CGE_DESENV', 'TB_DESENV.CGE_DESENV')
-            .leftJoin('TB_JOB_USUARIO', 'TB_JOB_INFO_DESENV.ID_FLUXO', 'TB_JOB_USUARIO.ID_FLUXO')
-            .leftJoin('TB_USUARIO', 'TB_JOB_USUARIO.ID_USUARIO', 'TB_USUARIO.ID_USUARIO');
+        const results = await knex('')
+            .select('',
+                '',
+                '')
+            .leftJoin('', '', '')
+            .leftJoin('', '', '');
 
         return res.json(results);
 
@@ -24,7 +18,7 @@ module.exports = {
 
     async search(req, res) {
 
-        const results = await knex('TB_JOB_INFO2')
+        const results = await knex('')
             .select('TB_JOB_INFO2.ID_FLUXO as id',
                 'TB_JOB_INFO2.nm_fluxo_ui as ui',
                 'TB_JOB_INFO2.nm_fluxo as name',

@@ -4,7 +4,7 @@ var connection = require('knex')({
     client: 'mysql',
     connection: async () => {
 
-      const result = await aws.mySecrets('lrpa_bi');
+      const result = await aws.mySecrets('');
 
       console.log('resultado do met aws ' + result);
 
@@ -13,12 +13,12 @@ var connection = require('knex')({
       console.log(parsed.password);
 
       return {
-        // host : 'rpa-dev1',
-        host : 'rpa-uat1',
-        // host : 'rpa-prd1',
+        // host : '',
+        host : '',
+        // host : '',
         user : parsed.username,
         password : parsed.password,
-        database : 'RPA_BI'
+        database : ''
         // expirationChecker: () => {
         //   return tokenExpiration <= Date.now();
         // }
